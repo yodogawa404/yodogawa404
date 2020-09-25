@@ -1,0 +1,121 @@
+_gentex_school() {
+cat <<EOF
+\documentclass[12pt,a4j]{ltjsarticle} % フォーマット指定
+
+\usepackage{luatexja} % 必須
+\usepackage{amsmath} % 数学用
+
+% 名前の定義
+\newcommand{\lastname}{$1}
+\newcommand{\firstname}{$2}
+\newcommand{\fullname}{\lastname \firstname}
+
+% 学年等の定義
+\newcommand{\stugrade}{3}
+\newcommand{\stuclass}{5}
+\newcommand{\stunumber}{19}
+
+\newcommand{\stufull}{\stugrade 年 \stuclass 組 \stunumber 番 }
+
+% 名前と学年等の組み合わせ
+\newcommand{\stuname}{\stufull \fullname}
+
+% 日付とタイトルの定義
+\newcommand{\docdate}{$(date '+%Y/%m/%d')}
+\newcommand{\doctitle}{ここにタイトルを入力}
+
+\usepackage[margin=15mm]{geometry} %　余白の設定
+\setlength\parindent{0pt} % 段落はじめの空白を消す
+
+% 本文ここから
+\begin{document}
+
+% ヘッダーここから
+\large{\docdate \hfill \doctitle \hfill \stuname}
+
+\hrule
+\vspace{5mm}
+% ヘッダーここまで
+
+ここにテキストを入力 
+
+\end{document}
+EOF
+
+}
+
+_gentex_realname() {
+cat <<EOF
+\documentclass[12pt,a4j]{ltjsarticle} % フォーマット指定
+
+\usepackage{luatexja} % 必須
+\usepackage{amsmath} % 数学用
+
+% 名前の定義
+\newcommand{\lastname}{$1}
+\newcommand{\firstname}{$2}
+\newcommand{\fullname}{\lastname \firstname}
+
+
+% 日付とタイトルの定義
+\newcommand{\docdate}{$(date '+%Y/%m/%d')}
+\newcommand{\doctitle}{ここにタイトルを入力}
+
+\usepackage[margin=15mm]{geometry} %　余白の設定
+\setlength\parindent{0pt} % 段落はじめの空白を消す
+
+% 本文ここから
+\begin{document}
+
+% ヘッダーここから
+\large{\docdate \hfill \doctitle \hfill \fullname}
+
+\hrule
+\vspace{5mm}
+% ヘッダーここまで
+
+ここにテキストを入力 
+
+\end{document}
+EOF
+
+}
+
+_gentex_handlename() {
+cat <<EOF
+\documentclass[12pt,a4j]{ltjsarticle} % フォーマット指定
+
+\usepackage{luatexja} % 必須
+\usepackage{amsmath} % 数学用
+
+% 名前の定義
+\newcommand{\name}{$1}
+
+
+% 日付とタイトルの定義
+\newcommand{\docdate}{$(date '+%Y/%m/%d')}
+\newcommand{\doctitle}{ここにタイトルを入力}
+
+\usepackage[margin=15mm]{geometry} %　余白の設定
+\setlength\parindent{0pt} % 段落はじめの空白を消す
+
+% 本文ここから
+\begin{document}
+
+% ヘッダーここから
+\large{\docdate \hfill \doctitle \hfill \name}
+
+\hrule
+\vspace{5mm}
+% ヘッダーここまで
+
+ここにテキストを入力 
+
+\end{document}
+EOF
+
+}
+
+alias gentex_school='_gentex_school LASTNAME FIRSTNAME'
+alias gentex_realname='_gentex_realname LASTNAME FIRSTNAME'
+alias gentex_handlename='_gentex_handlename HANDLENAME'
